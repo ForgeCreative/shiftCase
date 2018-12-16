@@ -9,6 +9,7 @@ Todo:
 - [x] Lowercase
 - [ ] Statement case
 - [ ] Title case
+- [ ] UI
 - [x] Notifications
 
 ## License
