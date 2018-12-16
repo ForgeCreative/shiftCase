@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>MyElectronApp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="window">
+        <div class="window-content">
+            <div>
+                <h1>Data from Clipboard</h1>
+                <p class="clipboard-text">
+                    Nothing in the clipboard
+                </p>
+                <div>
+                    <h2>Options: </h2>
+                    <ul>
+                        <li>
+                            <button class="uppercase-func">Uppercase</button>
+                        </li>
+                        <li>
+                            <button class="lowercase-func">Lowercase</button>
+                        </li>
+                        <li>
+                            <button class="titleCase-func">Title case</button>
+                        </li>
+                        <li>
+                            <button class="statementCase-func">Sentence case</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
+</body>
+</html>
