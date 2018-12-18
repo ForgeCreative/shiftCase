@@ -7,8 +7,8 @@ Todo:
 - [x] Strip text format
 - [X] Uppercase
 - [x] Lowercase
-- [ ] Statement case
-- [ ] Title case
+- [x] Statement case
+- [x] Title case
 - [ ] UI
 - [x] Notifications
 
