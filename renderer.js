@@ -21,10 +21,17 @@ clipboardEvent.on('text-changed', () => {
     console.log(currentText)
 }).startWatching();
 
+const textWithoutFormats = (string) => {
+    const textWithoutLineBreaks = string.replace(/\n|\r/g, " ");
+    const finalText = textWithoutLineBreaks.replace(/ +(?= )/g,'').trim();
+    const removeLeadingSpace = finalText.replace(/^\s+/g, '');
+    return removeLeadingSpace;
+}
+
 document.querySelector('.uppercase-func').addEventListener('click', () => {
     if(state.currentClipboardText !== '') {
-        const text = state.currentClipboardText;
-        console.log(text)
+        const string = state.currentClipboardText;
+        const text = textWithoutFormats(string)
         clipboard.writeText(text.toUpperCase())
     } else {
         let myNotification = new Notification('Clipboard error', {
@@ -35,8 +42,8 @@ document.querySelector('.uppercase-func').addEventListener('click', () => {
 
 document.querySelector('.lowercase-func').addEventListener('click', () => {
     if(state.currentClipboardText !== '') {
-        const text = state.currentClipboardText;
-        console.log(text)
+        const string = state.currentClipboardText;
+        const text = textWithoutFormats(string)
         clipboard.writeText(text.toLowerCase())
     } else {
         let myNotification = new Notification('Clipboard error', {
@@ -44,6 +51,34 @@ document.querySelector('.lowercase-func').addEventListener('click', () => {
         })
     }
 })
+
+document.querySelector('.titleCase-func').addEventListener('click', () => {
+    if(state.currentClipboardText !== '') {
+        const string = state.currentClipboardText;
+        const text = textWithoutFormats(string)
+        const titleCase = text.replace(/\b\w/g, l => l.toUpperCase())
+        clipboard.writeText(titleCase)
+    } else {
+        let myNotification = new Notification('Clipboard error', {
+            body: "There isn't text to transform into uppercase"
+        })
+    }
+})
+
+document.querySelector('.statementCase-func').addEventListener('click', () => {
+    console.log('statementCase')
+    if(state.currentClipboardText !== '') {
+        const string = state.currentClipboardText;
+        const text = textWithoutFormats(string);
+        const textStatementCase = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+        clipboard.writeText(textStatementCase)
+    } else {
+        let myNotification = new Notification('Clipboard error', {
+            body: "There isn't text to transform into uppercase"
+        })
+    }
+})
+
 
 /*
 setInterval(() => {
