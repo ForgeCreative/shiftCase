@@ -13,12 +13,15 @@ const state = {
 
 clipboardEvent.on('text-changed', () => {
     let currentText = clipboard.readText()
+    if (currentText.length > 15) {
+        currentText = currentText.slice(0, 35)
+    }
+
     let myNotification = new Notification('Added to the clipboard', {
         body: currentText
     })
     document.querySelector('.clipboard-text').innerHTML = currentText;
     state.currentClipboardText = currentText;
-    console.log(currentText)
 }).startWatching();
 
 const textWithoutFormats = (string) => {
