@@ -8,13 +8,14 @@ const clipboardEvent = require('electron-clipboard-extended')
 //clipboard.writeText('Example String')
 
 const state = {
-    currentClipboardText: ''
+    currentClipboardText: '',
+    selectedType: '',
 }
 
 clipboardEvent.on('text-changed', () => {
     let currentText = clipboard.readText()
     if (currentText.length > 15) {
-        currentText = currentText.slice(0, 35)
+        currentText = currentText.slice(0, 100) + "..."
     }
 
     let myNotification = new Notification('Added to the clipboard', {
@@ -41,6 +42,8 @@ document.querySelector('.uppercase-func').addEventListener('click', () => {
             body: "There isn't text to transform into uppercase"
         })
     }
+
+    state.selectedType = 'uppercase';
 })
 
 document.querySelector('.lowercase-func').addEventListener('click', () => {
@@ -50,9 +53,10 @@ document.querySelector('.lowercase-func').addEventListener('click', () => {
         clipboard.writeText(text.toLowerCase())
     } else {
         let myNotification = new Notification('Clipboard error', {
-            body: "There isn't text to transform into uppercase"
+            body: "There isn't text to transform into lowercase"
         })
     }
+    state.selectedType = 'lowercase';
 })
 
 document.querySelector('.titleCase-func').addEventListener('click', () => {
@@ -63,13 +67,13 @@ document.querySelector('.titleCase-func').addEventListener('click', () => {
         clipboard.writeText(titleCase)
     } else {
         let myNotification = new Notification('Clipboard error', {
-            body: "There isn't text to transform into uppercase"
+            body: "There isn't text to transform into title case"
         })
     }
+    state.selectedType = 'titlecase'
 })
 
 document.querySelector('.statementCase-func').addEventListener('click', () => {
-    console.log('statementCase')
     if(state.currentClipboardText !== '') {
         const string = state.currentClipboardText;
         const text = textWithoutFormats(string);
@@ -77,9 +81,15 @@ document.querySelector('.statementCase-func').addEventListener('click', () => {
         clipboard.writeText(textStatementCase)
     } else {
         let myNotification = new Notification('Clipboard error', {
-            body: "There isn't text to transform into uppercase"
+            body: "There isn't text to transform into statement case"
         })
     }
+
+    if (!this.classList.contains('selected')) {
+        this.classList.add('selected')
+    }
+
+    state.selectedType = 'statementcase'
 })
 
 

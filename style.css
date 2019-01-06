@@ -24,7 +24,7 @@ body {
     flex-direction: column;
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: .3rem;
 }
 
 .window-content {
@@ -40,6 +40,11 @@ body {
 
 .clipboardText {
     text-align: center;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .options {
