@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain, Tray, globalShortcut, remote, clipboard} = require('electron');
+const {app, BrowserWindow, ipcMain, Tray, nativeImage, globalShortcut, remote, clipboard} = require('electron');
 require('electron-debug')();
 const path = require('path');
 
@@ -11,22 +11,17 @@ let window = undefined
 app.on('ready', () => {
   createTray()
   createWindow()
-
-  /*
-  globalShortcut.register('CommandOrControl+C', function(){
-      console.log("test")
-      const text = clipboard.readText();
-      console.log(text);
-      window.webContents.send("testBindicp" , text);
-  });
-  */
 })
 
 const createTray = () => {
-  tray = new Tray(path.join('ss.png'))
+  const iconPath = path.join(__dirname, 'ss.png');
+  let trayIcon = nativeImage.createFromPath(iconPath);
+  trayIcon = trayIcon.resize({ width: 16, height: 12 });
+  tray = new Tray(trayIcon)
   tray.on('click', function (event) {
     toggleWindow()
   });
+  tray.setHighlightMode('never')
 }
 
 const getWindowPosition = () => {
@@ -45,7 +40,7 @@ const getWindowPosition = () => {
 const createWindow = () => {
   window = new BrowserWindow({
     width: 320,
-    height: 450,
+    height: 250,
     show: false,
     frame: false,
     fullscreenable: false,

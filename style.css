@@ -1,0 +1,69 @@
+@font-face {
+    font-family: "San Francisco Regular";
+    font-style: normal;
+    font-weight: bold;
+    src: url('./fonts/SF-Pro-Display-Regular.otf') format("opentype");
+  }
+  
+  @font-face {
+    font-family: "San Francisco Thin";
+    font-style: normal;
+    font-weight: bold;
+    src: url('./fonts/SF-Pro-Display-Thin.otf') format("opentype");
+  }
+  
+
+body {
+    font-size: 16px;
+    font-family: 'San Francisco Regular';
+    margin: 0;
+}
+
+.window {
+    flex: 1;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.window-content {
+    padding: 1.2rem;
+}
+
+.title {
+    font-size: .7rem;
+    text-transform: uppercase;
+    color: #898E93;
+    text-align: center;
+}
+
+.clipboardText {
+    text-align: center;
+}
+
+.options {
+    border-bottom: 1px solid #E7EAF4;
+    border-top: 1px solid #E7EAF4;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btn {
+    cursor: pointer;
+    font-size: .8em;
+    text-align: center;
+}
+
+.btn-red {
+    color: red;
+    text-align: center;
+}
+
+.stripOption {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    text-align: center;
+}

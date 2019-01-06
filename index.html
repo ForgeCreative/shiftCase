@@ -6,29 +6,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="header-arrow"></div>
     <div class="window">
         <div class="window-content">
-            <div>
-                <h1>Data from Clipboard</h1>
-                <p class="clipboard-text">
+            <div class="container">
+                <h1 class="title">Pasteboard text</h1>
+                <p class="clipboardText">
                     Nothing in the clipboard
                 </p>
-                <div>
-                    <h2>Options: </h2>
-                    <ul>
-                        <li>
-                            <button class="uppercase-func">Uppercase</button>
-                        </li>
-                        <li>
-                            <button class="lowercase-func">Lowercase</button>
-                        </li>
-                        <li>
-                            <button class="titleCase-func">Title case</button>
-                        </li>
-                        <li>
-                            <button class="statementCase-func">Sentence case</button>
-                        </li>
-                    </ul>
+                <div class="options">
+                    <span class="btn btn-selected uppercase-func">Uppercase</span>
+                    <span class="btn lowercase-func">Lowercase</span>
+                    <span class="btn titleCase-func">Title case</span>
+                    <span class="btn statementCase-func">Sentence case</span>
+                </div>
+                <div class="stripOption">
+                    <span class="btn btn-red">Strip formatting</span>
                 </div>
             </div>
         </div>

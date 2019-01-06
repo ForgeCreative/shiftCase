@@ -20,7 +20,7 @@ clipboardEvent.on('text-changed', () => {
     let myNotification = new Notification('Added to the clipboard', {
         body: currentText
     })
-    document.querySelector('.clipboard-text').innerHTML = currentText;
+    document.querySelector('.clipboardText').innerHTML = currentText;
     state.currentClipboardText = currentText;
 }).startWatching();
 
