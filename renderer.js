@@ -12,17 +12,30 @@ const state = {
     selectedType: '',
 }
 
+window.onload = () => {
+    let currentClipboard = clipboard.readText();
+    let text = textWithoutFormats(currentClipboard)
+    document.querySelector('.clipboardText').innerHTML = sliceText(text);
+}
+
+const sliceText = (text) => {
+    if (text.length > 15) {
+        text = text.slice(0, 100) + "..."
+        return text;
+    } else {
+        return text;
+    }
+}
+
+
 clipboardEvent.on('text-changed', () => {
     let currentText = clipboard.readText()
-    if (currentText.length > 15) {
-        currentText = currentText.slice(0, 100) + "..."
-    }
-
+    const textSliced = sliceText(currentText)
     let myNotification = new Notification('Added to the clipboard', {
         body: currentText
     })
-    document.querySelector('.clipboardText').innerHTML = currentText;
-    state.currentClipboardText = currentText;
+    document.querySelector('.clipboardText').innerHTML = textSliced;
+    state.currentClipboardText = textSliced;
 }).startWatching();
 
 const textWithoutFormats = (string) => {
