@@ -30,12 +30,12 @@ const sliceText = (text) => {
 
 clipboardEvent.on('text-changed', () => {
     let currentText = clipboard.readText()
-    const textSliced = sliceText(currentText)
+
     let myNotification = new Notification('Added to the clipboard', {
         body: currentText
     })
-    document.querySelector('.clipboardText').innerHTML = textSliced;
-    state.currentClipboardText = textSliced;
+    document.querySelector('.clipboardText').innerHTML = textWithoutFormats(sliceText(currentText));
+    state.currentClipboardText = textWithoutFormats(currentText);
 }).startWatching();
 
 const textWithoutFormats = (string) => {
@@ -98,13 +98,8 @@ document.querySelector('.statementCase-func').addEventListener('click', () => {
         })
     }
 
-    if (!this.classList.contains('selected')) {
-        this.classList.add('selected')
-    }
-
     state.selectedType = 'statementcase'
 })
-
 
 /*
 setInterval(() => {

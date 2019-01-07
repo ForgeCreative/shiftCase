@@ -24,11 +24,15 @@ body {
     flex-direction: column;
     display: flex;
     justify-content: center;
-    margin-top: .3rem;
+    border: 1px solid red;
 }
 
-.window-content {
-    padding: 1.2rem;
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid red;
 }
 
 .title {
@@ -50,7 +54,6 @@ body {
 .options {
     border-bottom: 1px solid #E7EAF4;
     border-top: 1px solid #E7EAF4;
-    padding: 1rem 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -68,7 +71,5 @@ body {
 }
 
 .stripOption {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
     text-align: center;
 }
