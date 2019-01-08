@@ -6,24 +6,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="header-arrow"></div>
     <div class="window">
-        <div class="window-content">
-            <div class="container">
-                <h1 class="title">Pasteboard text</h1>
-                <div class="clipboardText">
-                    <p>Nothing in the clipboard</p>
-                </div>
-                <div class="options">
-                    <span class="btn btn-selected uppercase-func">Uppercase</span>
-                    <span class="btn lowercase-func">Lowercase</span>
-                    <span class="btn titleCase-func">Title case</span>
-                    <span class="btn statementCase-func">Sentence case</span>
-                </div>
-            </div>
+        <h1 class="title">Pasteboard text</h1>
+        <div class="clipboardText">
+            <p>Nothing in the clipboard</p>
+        </div>
+        <div class="options">
+            <span class="btn btn-selected uppercase-func">UPPERCASE</span>
+            <span class="btn lowercase-func">lowercase</span>
+            <span class="btn titleCase-func">Sentence case</span>
+            <span class="btn statementCase-func">Title Case</span>
         </div>
     </div>
     <script>
-      // You can also require other files to run in this process
       require('./renderer.js')
     </script>
 </body>

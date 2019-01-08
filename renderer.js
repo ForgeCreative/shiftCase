@@ -42,7 +42,8 @@ const textWithoutFormats = (string) => {
     const textWithoutLineBreaks = string.replace(/\n|\r/g, " ");
     const finalText = textWithoutLineBreaks.replace(/ +(?= )/g,'').trim();
     const removeLeadingSpace = finalText.replace(/^\s+/g, '');
-    return removeLeadingSpace;
+    const removeSpaces = removeLeadingSpace.replace(/\s+/g, " ");
+    return removeSpaces;
 }
 
 document.querySelector('.uppercase-func').addEventListener('click', () => {

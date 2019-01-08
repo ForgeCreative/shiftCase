@@ -11,32 +11,40 @@
     font-weight: bold;
     src: url('./fonts/SF-Pro-Display-Thin.otf') format("opentype");
   }
-  
-
 body {
     font-size: 16px;
     font-family: 'San Francisco Regular';
     margin: 0;
+    padding: 0;
+    border-radius: none;
 }
+
+.header-arrow {
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    margin-left: -5px;
+    height: 10px;
+    width: 10px;
+    transform: rotate(45deg);
+    background-color: red;
+  }
 
 .window {
-    flex: 1;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    border: 1px solid red;
-}
-
-.container {
+    position: relative;
     display: flex;
     flex: 1;
-    flex-direction: column;
+    height: 100vh;
     justify-content: space-between;
-    border: 1px solid red;
+    flex-direction: column;
+    padding: 15px 15px 15px 15px;
+    box-sizing: border-box;
+    background-color: #fff;
+    top: 5px;
 }
 
 .title {
-    font-size: .7rem;
+    font-size: .6em;
     text-transform: uppercase;
     color: #898E93;
     text-align: center;
@@ -44,19 +52,20 @@ body {
 
 .clipboardText {
     text-align: center;
-    height: 85px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    color: #646B73;
+    font-size: 1.1em;
 }
 
 .options {
-    border-bottom: 1px solid #E7EAF4;
-    border-top: 1px solid #E7EAF4;
+    border-top: 1px solid #D8D8D8;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    font-size: 1.1em;
+    padding-top: .8rem;
 }
 
 .btn {
@@ -65,11 +74,6 @@ body {
     text-align: center;
 }
 
-.btn-red {
-    color: red;
-    text-align: center;
-}
-
-.stripOption {
-    text-align: center;
+.btn:hover {
+    color: #026CDD;
 }
