@@ -19,16 +19,6 @@ body {
     border-radius: none;
 }
 
-.header-arrow {
-    position: absolute;
-    top: -2px;
-    left: 50%;
-    margin-left: -5px;
-    height: 10px;
-    width: 10px;
-    transform: rotate(45deg);
-    background-color: red;
-  }
 
 .window {
     position: relative;
@@ -39,8 +29,6 @@ body {
     flex-direction: column;
     padding: 15px 15px 15px 15px;
     box-sizing: border-box;
-    background-color: #fff;
-    top: 5px;
 }
 
 .title {

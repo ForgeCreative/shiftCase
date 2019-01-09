@@ -56,6 +56,7 @@ document.querySelector('.uppercase-func').addEventListener('click', () => {
             body: "There isn't text to transform into uppercase"
         })
     }
+    console.log('UPPERCASE')
 
     state.selectedType = 'uppercase';
 })

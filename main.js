@@ -32,7 +32,7 @@ const getWindowPosition = () => {
   const x = Math.round(trayBounds.x + (trayBounds.width / 2) - (windowBounds.width / 2));
 
   // Position window 4 pixels vertically below the tray icon
-  const y = Math.round(trayBounds.y + trayBounds.height + 4);
+  const y = Math.round(trayBounds.y + trayBounds.height + 15);
 
   return {x: x, y: y};
 }
@@ -45,7 +45,7 @@ const createWindow = () => {
     frame: false,
     fullscreenable: false,
     resizable: false,
-    transparent: true,
+    transparent: false,
     webPreferences: {
       backgroundThrottling: false
     }
