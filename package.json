@@ -1,26 +1,25 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "shiftcase",
+  "version": "0.8.0",
+  "description": "Copy and paste and format text easy",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/ForgeCreative/shiftcase",
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Copy",
+    "Paste",
+    "Clipboard"
   ],
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^3.0.7",
-    "electron-debug": "^2.0.0"
+    "electron": "^3.0.7"
   },
   "dependencies": {
-    "electron-clipboard-extended": "^1.1.1"
+    "electron-clipboard-extended": "^1.1.1",
+    "electron-debug": "^2.0.0"
   }
 }

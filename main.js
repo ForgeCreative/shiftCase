@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain, Tray, nativeImage, globalShortcut, remote, clipboard} = require('electron');
+const {app, BrowserWindow, ipcMain, Tray, nativeImage, globalShortcut, remote, clipboard, systemPreferences} = require('electron');
 require('electron-debug')();
 const path = require('path');
 
@@ -13,17 +13,15 @@ app.on('ready', () => {
   createWindow()
 })
 
+
 const createTray = () => {
-  const iconPath = path.join(__dirname, 'ss.png');
+  const iconPath = systemPreferences.isDarkMode() ? path.join(__dirname, 'ss.png') : path.join(__dirname, 'ss-light.png');
   let trayIcon = nativeImage.createFromPath(iconPath);
   trayIcon = trayIcon.resize({ width: 16, height: 12 });
   tray = new Tray(trayIcon)
   tray.on('click', function (event) {
     toggleWindow()
   });
-  tray.on('show', () => {
-    console.log('tray opened')
-  })
   tray.setHighlightMode('never')
 }
 
@@ -72,6 +70,8 @@ const showWindow = () => {
   window.setPosition(position.x, position.y, false);
   window.show();
 }
+
+app.dock.hide();
 
 ipcMain.on('show-window', () => {
   showWindow()
