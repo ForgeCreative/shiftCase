@@ -9,6 +9,7 @@ const clipboardEvent = require('electron-clipboard-extended')
 const state = {
     currentClipboardText: '',
     selectedType: '',
+    notifications: false,
 }
 
 window.onload = () => {
@@ -30,9 +31,12 @@ const sliceText = (text) => {
 clipboardEvent.on('text-changed', () => {
     let currentText = clipboard.readText()
 
-    let myNotification = new Notification('Added to the clipboard', {
-        body: currentText
-    })
+    if (state.notifications) {
+        let myNotification = new Notification('Added to the clipboard', {
+            body: currentText
+        })
+    }
+    
     document.querySelector('.clipboardText').innerHTML = textWithoutFormats(sliceText(currentText));
     state.currentClipboardText = textWithoutFormats(currentText);
 }).startWatching();
