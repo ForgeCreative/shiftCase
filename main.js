@@ -21,6 +21,9 @@ const createTray = () => {
   tray.on('click', function (event) {
     toggleWindow()
   });
+  tray.on('show', () => {
+    console.log('tray opened')
+  })
   tray.setHighlightMode('never')
 }
 

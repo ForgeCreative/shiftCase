@@ -5,18 +5,16 @@ const {clipboard} = require('electron')
 const remote = require('electron').remote;
 const ipc = require('electron').ipcRenderer;
 const clipboardEvent = require('electron-clipboard-extended')
-//clipboard.writeText('Example String')
 
 const state = {
     currentClipboardText: '',
     selectedType: '',
 }
 
-
-
 window.onload = () => {
     let currentClipboard = clipboard.readText();
     let text = textWithoutFormats(currentClipboard)
+    state.currentClipboardText = text;
     document.querySelector('.clipboardText').innerHTML = sliceText(text);
 }
 
@@ -57,8 +55,6 @@ document.querySelector('.uppercase-func').addEventListener('click', () => {
             body: "There isn't text to transform into uppercase"
         })
     }
-    console.log('UPPERCASE')
-
     state.selectedType = 'uppercase';
 })
 
@@ -103,11 +99,3 @@ document.querySelector('.statementCase-func').addEventListener('click', () => {
 
     state.selectedType = 'statementcase'
 })
-
-/*
-setInterval(() => {
-    const clipboardText = clipboard.readText();
-    console.log(clipboardText);
-}, 500); */
-
-console.log('rendered.js')
