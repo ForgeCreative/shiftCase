@@ -12,6 +12,8 @@ const state = {
     selectedType: '',
 }
 
+
+
 window.onload = () => {
     let currentClipboard = clipboard.readText();
     let text = textWithoutFormats(currentClipboard)
@@ -19,14 +21,13 @@ window.onload = () => {
 }
 
 const sliceText = (text) => {
-    if (text.length > 15) {
+    if (text.length > 55) {
         text = text.slice(0, 100) + "..."
         return text;
     } else {
         return text;
     }
 }
-
 
 clipboardEvent.on('text-changed', () => {
     let currentText = clipboard.readText()
@@ -77,7 +78,7 @@ document.querySelector('.lowercase-func').addEventListener('click', () => {
 document.querySelector('.titleCase-func').addEventListener('click', () => {
     if(state.currentClipboardText !== '') {
         const string = state.currentClipboardText;
-        const text = textWithoutFormats(string)
+        const text = textWithoutFormats(string.toLowerCase())
         const titleCase = text.replace(/\b\w/g, l => l.toUpperCase())
         clipboard.writeText(titleCase)
     } else {
