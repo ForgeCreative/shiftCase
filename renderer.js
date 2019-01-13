@@ -42,11 +42,12 @@ clipboardEvent.on('text-changed', () => {
 }).startWatching();
 
 const textWithoutFormats = (string) => {
-    const textWithoutLineBreaks = string.replace(/\n|\r/g, " ");
-    const finalText = textWithoutLineBreaks.replace(/ +(?= )/g,'').trim();
-    const removeLeadingSpace = finalText.replace(/^\s+/g, '');
-    const removeSpaces = removeLeadingSpace.replace(/\s+/g, " ");
-    return removeSpaces;
+    const textWithoutLineBreaks = 
+        string.replace(/\n|\r/g, " ")
+            .replace(/ +(?= )/g,'').trim()
+            .replace(/^\s+/g, '')
+            .replace(/\s+/g, " ");
+    return textWithoutLineBreaks;
 }
 
 document.querySelector('.uppercase-func').addEventListener('click', () => {
@@ -79,7 +80,7 @@ document.querySelector('.titleCase-func').addEventListener('click', () => {
     if(state.currentClipboardText !== '') {
         const string = state.currentClipboardText;
         const text = textWithoutFormats(string.toLowerCase())
-        const titleCase = text.replace(/\b\w/g, l => l.toUpperCase())
+        const titleCase = text.replace(/(^| )(\w)/g, l => l.toUpperCase())
         clipboard.writeText(titleCase)
     } else {
         let myNotification = new Notification('Clipboard error', {
