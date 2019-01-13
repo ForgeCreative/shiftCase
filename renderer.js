@@ -76,7 +76,7 @@ document.querySelector('.lowercase-func').addEventListener('click', () => {
     state.selectedType = 'lowercase';
 })
 
-document.querySelector('.titleCase-func').addEventListener('click', () => {
+document.querySelector('.statementCase-func').addEventListener('click', () => {
     if(state.currentClipboardText !== '') {
         const string = state.currentClipboardText;
         const text = textWithoutFormats(string.toLowerCase())
@@ -87,10 +87,10 @@ document.querySelector('.titleCase-func').addEventListener('click', () => {
             body: "There isn't text to transform into title case"
         })
     }
-    state.selectedType = 'titlecase'
+    state.selectedType = 'statementcase'
 })
 
-document.querySelector('.statementCase-func').addEventListener('click', () => {
+document.querySelector('.titleCase-func').addEventListener('click', () => {
     if(state.currentClipboardText !== '') {
         const string = state.currentClipboardText;
         const text = textWithoutFormats(string);
@@ -101,6 +101,5 @@ document.querySelector('.statementCase-func').addEventListener('click', () => {
             body: "There isn't text to transform into statement case"
         })
     }
-
-    state.selectedType = 'statementcase'
+    state.selectedType = 'titlecase'
 })

@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain, Tray, nativeImage, globalShortcut, remote, clipboard, systemPreferences} = require('electron');
+const {app, BrowserWindow, ipcMain, Tray, nativeImage, globalShortcut, remote, clipboard, systemPreferences, Menu} = require('electron');
 require('electron-debug')();
 const path = require('path');
 
@@ -11,6 +11,7 @@ let window = undefined
 app.on('ready', () => {
   createTray()
   createWindow()
+  Menu.setApplicationMenu(menu)
 })
 
 
@@ -60,6 +61,30 @@ const createWindow = () => {
     }
   })
 }
+
+const createTemplateMenu = [
+  {
+    label: app.getName(),
+    submenu: [
+      { role: 'about' },
+      { type: 'separator' },
+      { role: 'services' },
+      { type: 'separator' },
+      { role: 'quit' }
+    ]
+  },
+  {
+    role: 'help',
+    submenu: [
+      {
+        label: 'Learn More',
+        click () { require('electron').shell.openExternal('https://github.com/ForgeCreative/shiftcase') }
+      }
+    ]
+  }
+]
+
+const menu = Menu.buildFromTemplate(createTemplateMenu)
 
 const toggleWindow = () => {
   window.isVisible() ? window.hide() : showWindow();
