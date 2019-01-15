@@ -1,6 +1,6 @@
 # Shiftcase
 
-Copy and paste text with Shiftcase with ease.
+ShiftCase is a Mac menubar app that removes formatting from rich text and allows for easy text case changes right from your pasteboard.
 
 Todo: 
 
