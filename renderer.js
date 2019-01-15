@@ -76,7 +76,7 @@ document.querySelector('.lowercase-func').addEventListener('click', () => {
     state.selectedType = 'lowercase';
 })
 
-document.querySelector('.statementCase-func').addEventListener('click', () => {
+document.querySelector('.titleCase-func').addEventListener('click', () => {
     if(state.currentClipboardText !== '') {
         const string = state.currentClipboardText;
         const text = textWithoutFormats(string.toLowerCase())
@@ -90,7 +90,7 @@ document.querySelector('.statementCase-func').addEventListener('click', () => {
     state.selectedType = 'statementcase'
 })
 
-document.querySelector('.titleCase-func').addEventListener('click', () => {
+document.querySelector('.statementCase-func').addEventListener('click', () => {
     if(state.currentClipboardText !== '') {
         const string = state.currentClipboardText;
         const text = textWithoutFormats(string);
