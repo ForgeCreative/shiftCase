@@ -94,7 +94,7 @@ document.querySelector('.statementCase-func').addEventListener('click', () => {
     if(state.currentClipboardText !== '') {
         const string = state.currentClipboardText;
         const text = textWithoutFormats(string);
-        const textStatementCase = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+        const textStatementCase = text.replace(/(^|\. *)([a-z])/g, l => l.toUpperCase());
         clipboard.writeText(textStatementCase)
     } else {
         let myNotification = new Notification('Clipboard error', {
