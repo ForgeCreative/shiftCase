@@ -5,6 +5,7 @@ const {clipboard} = require('electron')
 const remote = require('electron').remote;
 const ipc = require('electron').ipcRenderer;
 const clipboardEvent = require('electron-clipboard-extended')
+const franc = require('franc')
 
 String.prototype.toTitleCase = function() {
   var i, j, str, lowers, uppers;
@@ -32,6 +33,7 @@ const state = {
     currentClipboardText: '',
     selectedType: '',
     notifications: false,
+    language: ''
 }
 
 window.onload = () => {
@@ -58,9 +60,13 @@ clipboardEvent.on('text-changed', () => {
             body: currentText
         })
     }
+
+    const language = franc(textWithoutFormats(currentText));
     
     document.querySelector('.clipboardText').innerHTML = textWithoutFormats(sliceText(currentText));
     state.currentClipboardText = textWithoutFormats(currentText);
+    document.querySelector('.language-detection').innerHTML = language.toUpperCase()
+    state.language = language;
 }).startWatching();
 
 const textWithoutFormats = (string) => {

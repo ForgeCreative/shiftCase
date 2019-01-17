@@ -32,6 +32,12 @@ body {
     box-sizing: border-box;
 }
 
+.language-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
 .title {
     font-size: .6em;
     text-transform: uppercase;
