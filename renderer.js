@@ -6,6 +6,28 @@ const remote = require('electron').remote;
 const ipc = require('electron').ipcRenderer;
 const clipboardEvent = require('electron-clipboard-extended')
 
+String.prototype.toTitleCase = function() {
+  var i, j, str, lowers, uppers;
+  str = this.replace(/([^\W_]+[^\s-]*) */g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+
+  lowers = ['A', 'An', 'The', 'And', 'But', 'Or', 'For', 'Nor', 'As', 'At', 
+  'By', 'For', 'From', 'In', 'Into', 'Near', 'Of', 'On', 'Onto', 'To', 'With'];
+  for (i = 0, j = lowers.length; i < j; i++)
+    str = str.replace(new RegExp('\\s' + lowers[i] + '\\s', 'g'), 
+      function(txt) {
+        return txt.toLowerCase();
+      });
+
+  uppers = ['Id', 'Tv'];
+  for (i = 0, j = uppers.length; i < j; i++)
+    str = str.replace(new RegExp('\\b' + uppers[i] + '\\b', 'g'), 
+      uppers[i].toUpperCase());
+
+  return str;
+}
+
 const state = {
     currentClipboardText: '',
     selectedType: '',
@@ -80,7 +102,7 @@ document.querySelector('.titleCase-func').addEventListener('click', () => {
     if(state.currentClipboardText !== '') {
         const string = state.currentClipboardText;
         const text = textWithoutFormats(string.toLowerCase())
-        const titleCase = text.replace(/(^| )(\w)/g, l => l.toUpperCase())
+        const titleCase = text.toTitleCase();
         clipboard.writeText(titleCase)
     } else {
         let myNotification = new Notification('Clipboard error', {
