@@ -62,10 +62,10 @@ clipboardEvent.on('text-changed', () => {
     }
 
     const language = franc(textWithoutFormats(currentText));
-    
     document.querySelector('.clipboardText').innerHTML = textWithoutFormats(sliceText(currentText));
-    state.currentClipboardText = textWithoutFormats(currentText);
     document.querySelector('.language-detection').innerHTML = language.toUpperCase()
+    //createSelectTag(language)
+    state.currentClipboardText = textWithoutFormats(currentText);
     state.language = language;
 }).startWatching();
 
