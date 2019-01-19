@@ -93,7 +93,7 @@ const showWindow = () => {
   window.show();
 }
 
-app.dock.hide();
+//app.dock.hide();
 
 ipcMain.on('show-window', () => {
   showWindow()

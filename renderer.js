@@ -7,6 +7,21 @@ const ipc = require('electron').ipcRenderer;
 const clipboardEvent = require('electron-clipboard-extended')
 const franc = require('franc')
 
+const createSelectTag = (langArray) => {
+    const languageContainer = document.querySelector('.language-container');
+    const selectList = document.createElement('select')
+    selectList.id = "languageSelect";
+    languageContainer.appendChild(selectList)
+
+    for(let i = 0; i < 10; i++) {
+        console.log(langArray[i][0])
+        let option = document.createElement('option');
+        option.value = langArray[i][0]
+        option.text = langArray[i][0]
+        selectList.appendChild(option)
+    }
+}
+
 String.prototype.toTitleCase = function() {
   var i, j, str, lowers, uppers;
   str = this.replace(/([^\W_]+[^\s-]*) */g, function(txt) {
@@ -62,9 +77,9 @@ clipboardEvent.on('text-changed', () => {
     }
 
     const language = franc(textWithoutFormats(currentText));
+    const languageAll = franc.all(textWithoutFormats(currentText));
     document.querySelector('.clipboardText').innerHTML = textWithoutFormats(sliceText(currentText));
-    document.querySelector('.language-detection').innerHTML = language.toUpperCase()
-    //createSelectTag(language)
+    createSelectTag(languageAll)
     state.currentClipboardText = textWithoutFormats(currentText);
     state.language = language;
 }).startWatching();
