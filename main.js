@@ -47,7 +47,8 @@ const createWindow = () => {
     transparent: false,
     webPreferences: {
       backgroundThrottling: false
-    }
+    },
+     icon: path.join(__dirname, 'assets/icons/png/AppIcon-128px-128pt@1x.png')
   })
   window.loadURL(`file://${path.join(__dirname, 'index.html')}`)
 
