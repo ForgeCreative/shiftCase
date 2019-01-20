@@ -9,16 +9,32 @@ const franc = require('franc')
 
 const createSelectTag = (langArray) => {
     const languageContainer = document.querySelector('.language-container');
+    //clear inside div before append
+    while(languageContainer.firstChild) {
+        languageContainer.removeChild(languageContainer.firstChild)
+    }
     const selectList = document.createElement('select')
     selectList.id = "languageSelect";
     languageContainer.appendChild(selectList)
 
-    for(let i = 0; i < 10; i++) {
-        console.log(langArray[i][0])
-        let option = document.createElement('option');
-        option.value = langArray[i][0]
-        option.text = langArray[i][0]
-        selectList.appendChild(option)
+    const lengthCurrenyArray = langArray.length;
+
+    if (lengthCurrenyArray > 10) {
+        for(let i = 0; i < 10; i++) {
+            console.log(langArray[i][0])
+            let option = document.createElement('option');
+            option.value = langArray[i][0]
+            option.text = langArray[i][0]
+            selectList.appendChild(option)
+        }
+    } else {
+        for(let i = 0; i < lengthCurrenyArray; i++) {
+            console.log(langArray[i][0])
+            let option = document.createElement('option');
+            option.value = langArray[i][0]
+            option.text = langArray[i][0]
+            selectList.appendChild(option)
+        }
     }
 }
 
@@ -54,6 +70,8 @@ const state = {
 window.onload = () => {
     let currentClipboard = clipboard.readText();
     let text = textWithoutFormats(currentClipboard)
+    const languageAll = franc.all(text);
+    createSelectTag(languageAll)
     state.currentClipboardText = text;
     document.querySelector('.clipboardText').innerHTML = sliceText(text);
 }
