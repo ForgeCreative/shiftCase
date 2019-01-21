@@ -1,10 +1,13 @@
 {
   "name": "shiftcase",
-  "version": "0.8.0",
+  "version": "0.9.1",
   "description": "Copy and paste and format text easy",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "postinstall": "install-app-deps",
+    "start": "npm install && electron ./app",
+    "pack": "build --dir",
+    "dist": "build --mac -p always"
   },
   "repository": "https://github.com/ForgeCreative/shiftcase",
   "keywords": [
@@ -13,14 +16,32 @@
     "Paste",
     "Clipboard"
   ],
+  "build": {
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
+  }, 
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^3.0.7"
+    "electron": "^3.0.7",
+    "electron-builder": "^20.38.5"
   },
   "dependencies": {
     "electron-clipboard-extended": "^1.1.1",
     "electron-debug": "^2.0.0",
+    "electron-updater": "^4.0.6",
     "franc": "^4.0.0"
   }
 }
