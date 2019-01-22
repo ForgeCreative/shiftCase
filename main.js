@@ -1,5 +1,5 @@
-const {app, BrowserWindow, ipcMain, Tray, nativeImage, globalShortcut, remote, clipboard, systemPreferences, Menu} = require('electron');
-const {autoUpdater} = require("electron-updater");
+const {app, BrowserWindow, autoUpdater, ipcMain, Tray, nativeImage, globalShortcut, remote, clipboard, systemPreferences, Menu} = require('electron');
+require('update-electron-app')()
 require('electron-debug')();
 const path = require('path');
 
@@ -13,7 +13,6 @@ app.on('ready', () => {
   createTray()
   createWindow()
   Menu.setApplicationMenu(menu)
-  autoUpdater.checkForUpdates();
 })
 
 
@@ -95,14 +94,6 @@ const showWindow = () => {
   window.setPosition(position.x, position.y, false);
   window.show();
 }
-
-autoUpdater.on('update-downloaded', (info) => {
-    win.webContents.send('updateReady')
-});
-
-ipcMain.on("quitAndInstall", (event, arg) => {
-    autoUpdater.quitAndInstall();
-})
 
 //app.dock.hide();
 

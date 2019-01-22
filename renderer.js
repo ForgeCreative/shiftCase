@@ -5,80 +5,22 @@ const {clipboard} = require('electron')
 const remote = require('electron').remote;
 const ipc = require('electron').ipcRenderer;
 const clipboardEvent = require('electron-clipboard-extended')
-const franc = require('franc')
-
-const createSelectTag = (langArray) => {
-    const languageContainer = document.querySelector('.language-container');
-    //clear inside div before append
-    while(languageContainer.firstChild) {
-        languageContainer.removeChild(languageContainer.firstChild)
-    }
-    const selectList = document.createElement('select')
-    selectList.id = "languageSelect";
-    languageContainer.appendChild(selectList)
-
-    const lengthCurrenyArray = langArray.length;
-
-    if (lengthCurrenyArray > 10) {
-        for(let i = 0; i < 10; i++) {
-            console.log(langArray[i][0])
-            let option = document.createElement('option');
-            option.value = langArray[i][0]
-            option.text = langArray[i][0]
-            selectList.appendChild(option)
-        }
-    } else {
-        for(let i = 0; i < lengthCurrenyArray; i++) {
-            console.log(langArray[i][0])
-            let option = document.createElement('option');
-            option.value = langArray[i][0]
-            option.text = langArray[i][0]
-            selectList.appendChild(option)
-        }
-    }
-}
-
-String.prototype.toTitleCase = function() {
-  var i, j, str, lowers, uppers;
-  str = this.replace(/([^\W_]+[^\s-]*) */g, function(txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-
-  lowers = ['A', 'An', 'The', 'And', 'But', 'Or', 'For', 'Nor', 'As', 'At', 
-  'By', 'For', 'From', 'In', 'Into', 'Near', 'Of', 'On', 'Onto', 'To', 'With'];
-  for (i = 0, j = lowers.length; i < j; i++)
-    str = str.replace(new RegExp('\\s' + lowers[i] + '\\s', 'g'), 
-      function(txt) {
-        return txt.toLowerCase();
-      });
-
-  uppers = ['Id', 'Tv'];
-  for (i = 0, j = uppers.length; i < j; i++)
-    str = str.replace(new RegExp('\\b' + uppers[i] + '\\b', 'g'), 
-      uppers[i].toUpperCase());
-
-  return str;
-}
 
 const state = {
     currentClipboardText: '',
     selectedType: '',
-    notifications: false,
-    language: ''
 }
 
 window.onload = () => {
     let currentClipboard = clipboard.readText();
     let text = textWithoutFormats(currentClipboard)
-    const languageAll = franc.all(text);
-    createSelectTag(languageAll)
     state.currentClipboardText = text;
     document.querySelector('.clipboardText').innerHTML = sliceText(text);
 }
 
 const sliceText = (text) => {
-    if (text.length > 55) {
-        text = text.slice(0, 100) + "..."
+    if (text.length > 30) {
+        text = text.slice(0, 30) + "..."
         return text;
     } else {
         return text;
@@ -87,19 +29,8 @@ const sliceText = (text) => {
 
 clipboardEvent.on('text-changed', () => {
     let currentText = clipboard.readText()
-
-    if (state.notifications) {
-        let myNotification = new Notification('Added to the clipboard', {
-            body: currentText
-        })
-    }
-
-    const language = franc(textWithoutFormats(currentText));
-    const languageAll = franc.all(textWithoutFormats(currentText));
     document.querySelector('.clipboardText').innerHTML = textWithoutFormats(sliceText(currentText));
-    createSelectTag(languageAll)
     state.currentClipboardText = textWithoutFormats(currentText);
-    state.language = language;
 }).startWatching();
 
 const textWithoutFormats = (string) => {
@@ -164,3 +95,25 @@ document.querySelector('.statementCase-func').addEventListener('click', () => {
     }
     state.selectedType = 'titlecase'
 })
+
+String.prototype.toTitleCase = function() {
+  var i, j, str, lowers, uppers;
+  str = this.replace(/([^\W_]+[^\s-]*) */g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+
+  lowers = ['A', 'An', 'The', 'And', 'But', 'Or', 'For', 'Nor', 'As', 'At', 
+  'By', 'For', 'From', 'In', 'Into', 'Near', 'Of', 'On', 'Onto', 'To', 'With'];
+  for (i = 0, j = lowers.length; i < j; i++)
+    str = str.replace(new RegExp('\\s' + lowers[i] + '\\s', 'g'), 
+      function(txt) {
+        return txt.toLowerCase();
+      });
+
+  uppers = ['Id', 'Tv'];
+  for (i = 0, j = uppers.length; i < j; i++)
+    str = str.replace(new RegExp('\\b' + uppers[i] + '\\b', 'g'), 
+      uppers[i].toUpperCase());
+
+  return str;
+}
