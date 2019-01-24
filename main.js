@@ -13,6 +13,13 @@ app.on('ready', () => {
   createTray()
   createWindow()
   Menu.setApplicationMenu(menu)
+
+  window.on('show', () => {
+    tray.setHighlightMode('always')
+  })
+  window.on('hide', () => {
+    tray.setHighlightMode('never')
+  })
 })
 
 
@@ -24,6 +31,7 @@ const createTray = () => {
   tray.on('click', function (event) {
     toggleWindow()
   });
+  tray.setIgnoreDoubleClickEvents(true)
 }
 
 const getWindowPosition = () => {

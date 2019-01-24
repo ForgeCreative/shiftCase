@@ -1,6 +1,6 @@
 {
   "name": "shiftcase",
-  "version": "0.9.8",
+  "version": "0.9.91",
   "description": "Copy and paste and format text easy",
   "main": "main.js",
   "scripts": {
