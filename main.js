@@ -15,9 +15,17 @@ app.on('ready', () => {
   Menu.setApplicationMenu(menu)
 
   window.on('show', () => {
+    let iconPath = systemPreferences.isDarkMode() ? path.join(__dirname, 'ss-light.png') : path.join(__dirname, 'ss.png');
+    let trayIcon = nativeImage.createFromPath(iconPath);
+    trayIcon = trayIcon.resize({ width: 16, height: 12 });
+    tray.setImage(trayIcon);
     tray.setHighlightMode('always')
   })
   window.on('hide', () => {
+    let iconPath = systemPreferences.isDarkMode() ? path.join(__dirname, 'ss.png') : path.join(__dirname, 'ss-light.png');
+    let trayIcon = nativeImage.createFromPath(iconPath);
+    trayIcon = trayIcon.resize({ width: 16, height: 12 });
+    tray.setImage(trayIcon);
     tray.setHighlightMode('never')
   })
 })
@@ -39,7 +47,7 @@ const getWindowPosition = () => {
   const trayBounds = tray.getBounds();
 
   const x = Math.round(trayBounds.x + (trayBounds.width / 2) - (windowBounds.width / 2));
-  const y = Math.round(trayBounds.y + trayBounds.height + 15);
+  const y = Math.round(trayBounds.y + trayBounds.height);
 
   return {x: x, y: y};
 }
