@@ -24,7 +24,6 @@ const createTray = () => {
   tray.on('click', function (event) {
     toggleWindow()
   });
-  tray.setHighlightMode('never')
 }
 
 const getWindowPosition = () => {

@@ -1,6 +1,6 @@
 {
   "name": "shiftcase",
-  "version": "0.9.5",
+  "version": "0.9.8",
   "description": "Copy and paste and format text easy",
   "main": "main.js",
   "scripts": {
@@ -20,16 +20,20 @@
     "dmg": {
       "contents": [
         {
-          "x": 110,
-          "y": 150
+          "x": 200,
+          "y": 180
         },
         {
-          "x": 240,
-          "y": 150,
+          "x": 440,
+          "y": 180,
           "type": "link",
           "path": "/Applications"
         }
-      ]
+      ],
+      "window": {
+        "width": 630,
+        "height": 350
+      }
     }
   },
   "author": "GitHub",
