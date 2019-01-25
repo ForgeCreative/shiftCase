@@ -5,6 +5,10 @@ const path = require('path');
 
 let tray = undefined
 let window = undefined
+let iconSize = {
+  width: 19,
+  height: 15
+} 
 
 // Don't show the app in the doc
 //app.dock.hide()
@@ -15,16 +19,16 @@ app.on('ready', () => {
   Menu.setApplicationMenu(menu)
 
   window.on('show', () => {
-    let iconPath = systemPreferences.isDarkMode() ? path.join(__dirname, 'ss-light.png') : path.join(__dirname, 'ss.png');
+    let iconPath = systemPreferences.isDarkMode() ? path.join(__dirname, 'ss.png') : path.join(__dirname, 'ss.png');
     let trayIcon = nativeImage.createFromPath(iconPath);
-    trayIcon = trayIcon.resize({ width: 16, height: 12 });
+    trayIcon = trayIcon.resize(iconSize);
     tray.setImage(trayIcon);
     tray.setHighlightMode('always')
   })
   window.on('hide', () => {
     let iconPath = systemPreferences.isDarkMode() ? path.join(__dirname, 'ss.png') : path.join(__dirname, 'ss-light.png');
     let trayIcon = nativeImage.createFromPath(iconPath);
-    trayIcon = trayIcon.resize({ width: 16, height: 12 });
+    trayIcon = trayIcon.resize(iconSize);
     tray.setImage(trayIcon);
     tray.setHighlightMode('never')
   })
@@ -34,7 +38,7 @@ app.on('ready', () => {
 const createTray = () => {
   const iconPath = systemPreferences.isDarkMode() ? path.join(__dirname, 'ss.png') : path.join(__dirname, 'ss-light.png');
   let trayIcon = nativeImage.createFromPath(iconPath);
-  trayIcon = trayIcon.resize({ width: 16, height: 12 });
+  trayIcon = trayIcon.resize(iconSize);
   tray = new Tray(trayIcon)
   tray.on('click', function (event) {
     toggleWindow()
