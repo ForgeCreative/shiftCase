@@ -3,3 +3,9 @@ node_modules
 electron-builder.yml
 dist
 build
+*.pkg
+*.p12
+*.provisionprofile
+scripts
+auto_updater.json
+ShiftCase-mas-x64

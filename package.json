@@ -1,13 +1,12 @@
 {
-  "name": "ShiftCase",
-  "version": "0.9.91",
+  "name": "shiftcase",
+  "version": "1.0.2",
   "description": "Copy and paste and format text easy",
   "main": "main.js",
   "scripts": {
-    "postinstall": "install-app-deps",
     "start": "npm install && electron .",
-    "pack": "build --dir",
-    "dist": "build --mac -p always"
+    "dist": "node_modules/.bin/build",
+    "release": "bash scripts/publish_shiftcase.sh"
   },
   "repository": "https://github.com/ForgeCreative/shiftcase",
   "keywords": [
@@ -17,41 +16,46 @@
     "Clipboard"
   ],
   "build": {
-    "dmg": {
-      "contents": [
-        {
-          "x": 200,
-          "y": 180
-        },
-        {
-          "x": 440,
-          "y": 180,
-          "type": "link",
-          "path": "/Applications"
-        }
+    "appId": "com.builtbyforge.com.builtbyforge",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        "mas",
+        "dmg"
       ],
-      "window": {
-        "width": 630,
-        "height": 350
-      }
-    }
+      "entitlements": "build/entitlements.mac.plist",
+      "provisioningProfile": "build/embedded.provisionprofile",
+      "identity": "42T54MWP33",
+      "type": "distribution",
+      "icon": "build/icon.icns"
+    },
+    "mas": {
+      "entitlements": "build/entitlements.mas.plist",
+      "type": "distribution",
+      "category": "public.app-category.productivity"
+    },
+    "files": [
+      "style.css",
+      "ss-light.png",
+      "ss.png",
+      "index.html",
+      "main.js",
+      "renderer.js",
+      "fonts/*",
+      "assets/*",
+      "node_modules/**/*",
+      "package.json",
+      "embedded.provisionprofile"
+    ]
   },
-  "author": "GitHub",
+  "author": "Forge",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^4.0.2",
-    "electron-builder": "^20.38.5"
+    "electron-builder": "*"
   },
   "dependencies": {
     "electron-clipboard-extended": "^1.1.1",
-    "electron-debug": "^2.0.0",
-    "electron-updater": "^4.0.6",
-    "franc": "^4.0.0",
-    "update-electron-app": "^1.3.0"
-  },
-  "provider": "github",
-  "owner": "mariodev12",
-  "host": "github.com",
-  "protocol": "https",
-  "private": false
+    "electron-osx-sign": "^0.4.11"
+  }
 }

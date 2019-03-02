@@ -1,6 +1,4 @@
 const {app, BrowserWindow, autoUpdater, ipcMain, Tray, nativeImage, globalShortcut, remote, clipboard, systemPreferences, Menu} = require('electron');
-require('update-electron-app')()
-require('electron-debug')();
 const path = require('path');
 
 let tray = undefined
@@ -113,8 +111,6 @@ const showWindow = () => {
   window.setPosition(position.x, position.y, false);
   window.show();
 }
-
-//app.dock.hide();
 
 ipcMain.on('show-window', () => {
   showWindow()
