@@ -3,6 +3,18 @@
 <head>
     <meta charset="utf-8">
     <title>MyElectronApp</title>
+    <script>
+    window.__setTheme = () => {
+      let userTheme = localStorage.user_theme
+      let OSTheme = localStorage.os_theme
+      let defaultTheme = 'light'
+      document.documentElement.setAttribute(
+        'data-theme',
+        userTheme || OSTheme || defaultTheme,
+      )
+    }
+    __setTheme()
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>

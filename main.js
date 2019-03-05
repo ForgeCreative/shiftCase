@@ -21,7 +21,7 @@ systemPreferences.subscribeNotification(
 )
 
 app.on('ready', () => {
-  createTray()
+  createTray(systemPreferences.isDarkMode())
   createWindow()
   Menu.setApplicationMenu(menu)
 
@@ -71,7 +71,7 @@ const createWindow = () => {
     frame: false,
     fullscreenable: false,
     resizable: false,
-    transparent: false,
+    transparent: true,
     webPreferences: {
       backgroundThrottling: false
     },
