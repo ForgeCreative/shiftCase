@@ -78,7 +78,6 @@ const createWindow = () => {
      icon: path.join(__dirname, 'assets/icons/png/AppIcon-128px-128pt@1x.png')
   })
   window.loadURL(`file://${path.join(__dirname, 'index.html')}`)
-  window.webContents.openDevTools()
 
   // Hide the window when it loses focus
   window.on('blur', () => {
@@ -128,4 +127,8 @@ ipcMain.on('show-window', () => {
 
 ipcMain.on('close-main-window', function () {
     app.quit();
+});
+
+app.setLoginItemSettings({
+    openAtLogin: true,
 });
