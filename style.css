@@ -39,7 +39,7 @@
 
 [data-theme^="dark"], 
 [data-theme] [data-theme^="dark"] { 
-    background-color: #000; 
+    background-color: #101113; 
 }
 
 [data-theme^="dark"], 
@@ -122,5 +122,5 @@ body {
 }
 
 .btn:hover {
-    color: #026CDD;
+    color: #60ADFF;
 }
