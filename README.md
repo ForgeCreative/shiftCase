@@ -10,7 +10,7 @@ Todo:
 - [x] Statement case
 - [x] Title case
 - [x] UI
-- [x] Notifications
+- [x] Dark mode.
 
 ## License
 
