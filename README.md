@@ -11,6 +11,7 @@ Todo:
 - [x] Title case
 - [x] UI
 - [x] Dark mode.
+- [ ] Menu boot at start up
 
 ## License
 
