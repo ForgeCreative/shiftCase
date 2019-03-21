@@ -37,14 +37,13 @@
     color: #000; 
 }
 
-[data-theme^="light"], 
-[data-theme] [data-theme^="light"] .btn:hover {
+[data-theme^="light"] .btn:hover {
     color: #026CDD;
 }
 
 [data-theme^="dark"], 
 [data-theme] [data-theme^="dark"] { 
-    background-color: #101113; 
+    background-color: #232425; 
 }
 
 [data-theme^="dark"], 
@@ -67,11 +66,9 @@
     color: white;
 }
 
-[data-theme^="dark"], 
-[data-theme] [data-theme^="dark"] .btn:hover {
-    color: #60ADFF
+[data-theme^="dark"] .btn:hover {
+    color: #0ab0ff;
 }
-
 
 body {
     font-size: 16px;
@@ -130,8 +127,4 @@ body {
     cursor: pointer;
     font-size: .7em;
     text-align: center;
-}
-
-.btn:hover {
-    color: #026CDD;
 }
