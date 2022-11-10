@@ -51,7 +51,7 @@
   "author": "Forge",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^4.0.2",
+    "electron": "^18.3.7",
     "electron-builder": "*"
   },
   "dependencies": {
